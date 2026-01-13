@@ -1,0 +1,5 @@
+HTTp Method :- Get(Read) || Post(Create)|| patch,put(Update), delete(delete)
+
+
+Jab ek hi field ko update karna rhe to patch ka use karna hai 
+aur jb bahut sare field ko ek sath sath update karna rhe to out ka use hota hai
