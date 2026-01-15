@@ -15,14 +15,18 @@ const {Schema}= mongoose;
     age:{
         type:Number,
         min:14,
-        max:70
+        max:70,
+        required:true
 
     },
     emailId:{
 
         type:String,
         required:true,
-        unique:true
+        unique:true,
+        trim:true,
+        lowercase:true,
+        immutable:true
 
     },
     password:{
@@ -41,7 +45,7 @@ const {Schema}= mongoose;
     }
 
 
-  })
+  },{timestamps:true})
 
 
 const User =mongoose.model("user",userschema);

@@ -1,0 +1,28 @@
+JWT: Header.PayLoad.DigitalSignature
+
+payLoad:{
+    user_name:
+    emailId:
+    Please don't use sensitive information
+}
+jWT hi batata hai ki wahi insahan hai 
+ye insaan ko verify kar rha hai ki main hi wahi banda hu jo access len chahta hu
+
+
+(Header+Payload)=>Hashcode
+(Encrpyt the hashcode)=> DigitalSignature
+
+key server k paas rahta hai
+
+
+Digital sensitive verify karnat ahai message intrigity maintain kiya hai ki nahi
+
+Header batata hai ki kaun si algorithm use kiya hai
+
+
+Header aur payload hashing nahi lagega 
+header aur payload Encrpytform mme nahi rhata 
+
+
+hashcode one way me hota hai 
+but encryption  both way me hota hai 
