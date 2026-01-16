@@ -1,0 +1,19 @@
+Refresh Token: Access token create bhi ho jaye 
+               Invalidate wali property bhi chahiye hogi
+
+               Refresh token tumhare Access token ko fir se create kar deta jhai client refresh token bhejega  server ko
+
+Agar password change karte ho to refresh token ho jayegai 
+
+Lakin Access token change nahi hoti hai
+Isiliye Refresh Token Invalidate kar sakte hai but Access token kabhi validate nahi hoga 
+
+
+Refresh Token ek random String generate karta hai thik  aur wo String database me le jake store kar dega  fir jab bhi uske baaad aayega  wo data base se check kar lega \
+Refresh token Database me store karata hai aur sath sath uski expiray datae bhi store karta hai aur kaun se user ka hai wo bhi sore karta hai 
+Aur agar user password change karta hai server  database se purana token ko invalidate karke naya wala store kr adega 
+
+
+Jo refresh token database me store karte hai usko hashcode me rkhte hai
+
+

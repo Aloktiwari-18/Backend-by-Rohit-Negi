@@ -26,3 +26,6 @@ header aur payload Encrpytform mme nahi rhata
 
 hashcode one way me hota hai 
 but encryption  both way me hota hai 
+
+
+
