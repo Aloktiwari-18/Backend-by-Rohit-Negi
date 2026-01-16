@@ -93,6 +93,8 @@ app.get("/user/:id",async(req,res)=>{
     }
 })
 
+
+
 main()
 .then(async ()=>{
     console.log("Connected to DB")

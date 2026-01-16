@@ -8,7 +8,7 @@ const userAuth= async(req,res,next)=>{
     }
 
 
-        const payload=   jwt.verify(token,preocess.env.SECRET_KEY)
+        const payload=   jwt.verify(token,process.env.SECRET_KEY)
     
         const{_id}=payload;
         if(!_id){
@@ -16,8 +16,9 @@ const userAuth= async(req,res,next)=>{
         }
         const result=await User.findById(_id);
         req.result=result;
-        res.send(result);
+        
         next();
+        
     }
     catch(err){
         res.send("Error"+err.message);
