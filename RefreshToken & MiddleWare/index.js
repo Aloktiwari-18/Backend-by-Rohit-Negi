@@ -33,13 +33,13 @@ app.post("/login",async(req, res)=>{
     try{
         const people=await User.findOne({emailId:req.body.emailId})
         
-        const isAllowed= await bcrypt.compare(req.body.password,people.password);
+        const isAllowed= people.verifyPassword(req.body.password);
         if(!isAllowed){
             throw new Error("Invalid Credential");
         }
         // JWT Token
 
-      const token=  jwt.sign({_id:people._id,emailId:people.emailId},"Rohit@123$",{expiresIn:"10d"});
+      const token=  people.getJWT();
         res.cookie("token",token)
         res.send("Login Successfully")
 
@@ -103,7 +103,7 @@ app.get("/user",userAuth,async(req,res)=>{
 main()
 .then(async ()=>{
     console.log("Connected to DB")
-    app.listen(3000,()=>{
+    app.listen(process.env.PORT,()=>{
     console.log("Listen at port 3000");
 })
 

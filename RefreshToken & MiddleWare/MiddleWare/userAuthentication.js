@@ -8,7 +8,7 @@ const userAuth= async(req,res,next)=>{
     }
 
 
-        const payload=   jwt.verify(token,"Rohit@123$")
+        const payload=   jwt.verify(token,preocess.env.SECRET_KEY)
     
         const{_id}=payload;
         if(!_id){
