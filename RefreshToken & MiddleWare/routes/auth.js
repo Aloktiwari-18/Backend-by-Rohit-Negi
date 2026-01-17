@@ -3,6 +3,10 @@ const authRouter= express.Router();
 const bcrypt= require("bcrypt")
 const User= require("../Models/user")
 
+const redisClient= require("../config/redis")
+const jwt= require('jsonwebtoken')
+const userAuth= require("../MiddleWare/userAuthentication")
+
 authRouter.post("/register",async(req,res)=>{
     try{
     validUser(req.body)
@@ -42,4 +46,26 @@ authRouter.post("/login",async(req, res)=>{
     }
 
 })
+
+// Redddis k dataBase me humko token insert karna hai
+ 
+authRouter.post("/logout", userAuth,async(req,res)=>{
+    try{
+
+        
+        const {token}= req.cookies;
+        const payload= jwt.decode(token);
+        console.log(payload)
+        await redisClient.set(`token:${token}`,"Blocked")
+        await redisClient.expireAt(`token:${token}`,1800);//payload.exp
+        res.cookie("token",null,{expires:new Date(Date.now())});
+        res.send("Logout Successfully")
+
+    }
+    catch(err){
+        res.send("Error"+err.message);
+    }
+})
+
+
 module.exports= authRouter;

@@ -12,25 +12,37 @@ const jwt= require('jsonwebtoken')
 
 const userAuth= require("./MiddleWare/userAuthentication")
 require('dotenv').config()
-console.log(process.env)
+
 
 const authRouter= require("./routes/auth");
 const userRouter = require("./routes/user");
+const redisClient=require("./config/redis");
 
 
 app.use("/",authRouter);
 
 app.use("/user",userRouter);
 
-main()
-.then(async ()=>{
-    console.log("Connected to DB")
-    app.listen(process.env.PORT,()=>{
+const InitializeConnection= async()=>{
+    try{
+        await redisClient.connect();
+        console.log("Connected to Reddis")
+        await main();
+        console.log("Connected to MongoDB");
+
+
+        app.listen(process.env.PORT,()=>{
     console.log("Listen at port 3000");
 })
 
+        
 
-})
-.catch((err)=> console.log(err));
 
+    }catch(err){
+        console.log("Error"+err)
+
+    }
+}
+
+InitializeConnection();
 
