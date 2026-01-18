@@ -12,7 +12,9 @@ const jwt= require('jsonwebtoken')
 
 const userAuth= require("./MiddleWare/userAuthentication")
 require('dotenv').config()
+const rateLimiter= require("./MiddleWare/rateLimiter")
 
+app.use(rateLimiter);
 
 const authRouter= require("./routes/auth");
 const userRouter = require("./routes/user");
