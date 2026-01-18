@@ -41,7 +41,7 @@ authRouter.post("/login",async(req, res)=>{
 
     }
     catch(err){
-        res.send("Error: "+err.message)
+        res.send("Error: "+err.message )
 
     }
 
